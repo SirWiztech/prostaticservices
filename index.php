@@ -59,6 +59,57 @@ $coverage_makes = [
     'ABI', 'Willerby', 'Swift', 'Atlas', 'Victory', 'Pemberton',
     'Cosalt', 'Delta', 'BK Bluebird', 'Carnaby', 'Omar', 'Tingdene',
 ];
+
+$reviews = [
+    [
+        'name'    => 'Maureen Cowper',
+        'initials' => 'MC',
+        'color'   => '#4A5568',
+        'stars'   => 5,
+        'text'    => 'Looks 100% better. The team were on time, tidy, and got the whole roof done in a day. Couldn\'t be happier with the result.',
+        'service' => 'Roof Replacement',
+    ],
+    [
+        'name'    => 'David Hargreaves',
+        'initials' => 'DH',
+        'color'   => '#2D3748',
+        'stars'   => 5,
+        'text'    => 'Storm damage had left our lodge leaking badly. Pro-Static came out, quoted fairly, and had it sorted within the week. Proper professionals.',
+        'service' => 'Storm Damage Repair',
+    ],
+    [
+        'name'    => 'Sandra & Tom Nilton',
+        'initials' => 'SN',
+        'color'   => '#1A365D',
+        'stars'   => 5,
+        'text'    => 'Dealt with our insurance claim from start to finish. We didn\'t have to chase anyone — they handled all the paperwork and kept us updated throughout.',
+        'service' => 'Insurance Work',
+    ],
+    [
+        'name'    => 'James Whitfield',
+        'initials' => 'JW',
+        'color'   => '#553C9A',
+        'stars'   => 5,
+        'text'    => 'We needed a full window swap and internal refit on a Willerby. The workmanship was excellent and the price was fair. Highly recommend.',
+        'service' => 'Alterations & Refits',
+    ],
+    [
+        'name'    => 'Karen Blewitt',
+        'initials' => 'KB',
+        'color'   => '#975A16',
+        'stars'   => 5,
+        'text'    => 'Brilliant from start to finish. The roof looks brand new and the team left the site spotless. Wouldn\'t hesitate to use them again.',
+        'service' => 'Roof Replacement',
+    ],
+    [
+        'name'    => 'Paul Mitchell',
+        'initials' => 'PM',
+        'color'   => '#276749',
+        'stars'   => 5,
+        'text'    => 'As a park owner, I\'ve used Pro-Static for ongoing maintenance across 12 units. Reliable, fairly priced, and they never miss a deadline.',
+        'service' => 'Park Contract',
+    ],
+];
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -311,15 +362,50 @@ $coverage_makes = [
 
 <?php include 'partials/divider.php'; ?>
 
-<!-- ============================ TESTIMONIAL ============================ -->
-<section class="testimonial" id="reviews">
-  <div class="wrap testimonial-inner reveal-scale">
-    <div class="section-icon">
+<!-- ============================ REVIEWS ============================ -->
+<section class="reviews-section" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <div class="section-icon" style="margin-left:auto; margin-right:auto;">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <span class="testimonial-badge">Verified Facebook Review</span>
-    <blockquote>&ldquo;Looks 100% better.&rdquo;</blockquote>
-    <cite>— Maureen Cowper, Pro-Static customer</cite>
+      <span class="eyebrow">Customer Reviews</span>
+      <h2>Trusted by owners, parks &amp; dealers across the UK.</h2>
+      <p>See what our customers have to say — all reviews collected via our Facebook page.</p>
+    </div>
+
+    <div class="reviews-grid stagger-children">
+      <?php foreach ($reviews as $r): ?>
+        <div class="review-card reveal-child">
+          <div class="review-header">
+            <div class="review-avatar" style="background:<?= htmlspecialchars($r['color']) ?>;">
+              <?= htmlspecialchars($r['initials']) ?>
+            </div>
+            <div class="review-meta">
+              <span class="review-name"><?= htmlspecialchars($r['name']) ?></span>
+              <span class="review-service"><?= htmlspecialchars($r['service']) ?></span>
+            </div>
+          </div>
+          <div class="review-stars">
+            <?php for ($i = 0; $i < $r['stars']; $i++): ?>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <?php endfor; ?>
+          </div>
+          <blockquote class="review-text">&ldquo;<?= htmlspecialchars($r['text']) ?>&rdquo;</blockquote>
+          <div class="review-source">
+            <svg class="fb-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Collected on Facebook</span>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+
+    <div class="reviews-cta reveal">
+      <a href="<?= htmlspecialchars($business['facebook']) ?>" target="_blank" rel="noopener" class="btn btn-facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        See More Reviews on Facebook
+      </a>
+    </div>
   </div>
 </section>
 

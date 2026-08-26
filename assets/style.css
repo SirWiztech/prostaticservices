@@ -426,18 +426,60 @@ section{ padding:96px 0; }
 /* ==========================================================================
    Testimonial
    ========================================================================== */
-.testimonial{ background:var(--graphite); position:relative; overflow:hidden; }
-.testimonial-inner{ max-width:760px; margin:0 auto; text-align:center; position:relative; z-index:2; }
-.testimonial blockquote{
-  font-family:var(--display); font-weight:700; font-size:clamp(1.6rem,3.6vw,2.6rem);
-  color:var(--silver-hi); margin:0 0 28px; line-height:1.25;
+/* ==========================================================================
+   Reviews Section
+   ========================================================================== */
+.reviews-section{ background:var(--graphite); position:relative; overflow:hidden; }
+.reviews-section .section-head h2{ color:var(--silver-hi); }
+.reviews-section .section-head p{ color:var(--silver); }
+.reviews-section .eyebrow{ color:var(--silver-hi); }
+.reviews-section .eyebrow::before{ background:var(--silver-hi); }
+.reviews-section .section-icon{ background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); }
+.reviews-section .section-icon svg{ stroke:var(--silver-hi); }
+.reviews-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
 }
-.testimonial cite{ font-family:var(--mono); font-size:13px; color:var(--silver); font-style:normal; letter-spacing:0.04em; }
-.testimonial-badge{
-  display:inline-flex; align-items:center; gap:8px; margin-bottom:26px;
-  font-family:var(--mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--silver-hi);
-  border:1px solid var(--line-strong); padding:7px 14px; border-radius:20px;
+.review-card{
+  background:var(--ink); border:1px solid var(--line-strong); border-radius:var(--radius);
+  padding:28px 24px 22px;
+  display:flex; flex-direction:column; gap:16px;
+  transition:border-color .25s ease, transform .3s ease;
 }
+.review-card:hover{ border-color:var(--silver); transform:translateY(-4px); }
+.review-header{ display:flex; align-items:center; gap:14px; }
+.review-avatar{
+  width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-weight:700; font-size:16px;
+  color:var(--white); flex-shrink:0;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+.review-meta{ display:flex; flex-direction:column; gap:2px; }
+.review-name{ font-family:var(--display); font-weight:700; font-size:15px; color:var(--silver-hi); }
+.review-service{ font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--silver); }
+.review-stars{ display:flex; gap:3px; }
+.review-stars svg{ width:16px; height:16px; fill:var(--silver-hi); }
+.review-text{
+  font-family:var(--body); font-size:14.5px; line-height:1.65;
+  color:var(--silver); margin:0; flex:1;
+}
+.review-source{
+  display:flex; align-items:center; gap:8px;
+  padding-top:14px; border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--silver);
+}
+.review-source .fb-icon{ width:18px; height:18px; fill:#1877F2; flex-shrink:0; }
+.reviews-cta{ text-align:center; margin-top:48px; }
+.btn-facebook{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#1877F2; color:#fff; font-family:var(--mono); font-size:13px;
+  letter-spacing:0.06em; text-transform:uppercase; padding:14px 28px;
+  border-radius:var(--radius); border:none; cursor:pointer;
+  transition:background .2s, transform .18s, box-shadow .18s;
+}
+.btn-facebook:hover{ background:#166FE5; transform:translateY(-2px); box-shadow:0 6px 20px rgba(24,119,242,0.35); }
+.btn-facebook svg{ width:18px; height:18px; fill:#fff; flex-shrink:0; }
 
 /* ==========================================================================
    Contact
@@ -502,6 +544,7 @@ section{ padding:96px 0; }
   .process-list::before{ display:none; }
   .coverage-inner{ grid-template-columns:1fr; gap:36px; }
   .contact-inner{ grid-template-columns:1fr; gap:48px; }
+  .reviews-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width: 760px){
   .nav-links{ display:none; }
@@ -514,6 +557,7 @@ section{ padding:96px 0; }
   .brand-word{ font-size:16px; }
   .service-grid{ grid-template-columns:1fr; }
   .portfolio-grid{ grid-template-columns:1fr; }
+  .reviews-grid{ grid-template-columns:1fr; }
   .process-list{ grid-template-columns:1fr; row-gap:40px; }
   .process-step{ padding-right:0; }
   .coverage-list{ grid-template-columns:1fr; }
